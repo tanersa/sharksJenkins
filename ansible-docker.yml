@@ -1,0 +1,35 @@
+---
+- hosts: all
+  become: true
+  #user: ansadmin
+
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: /opt/docker/webapp.war
+      dest: /opt/docker
+      owner: ansadmin
+      group: ansadmin
+      mode: '0644'
+
+  - name: stop current running container
+    command: docker stop simple-devops-container
+    ignore_errors: yes
+
+  - name: remove stopped container
+    command: docker rm simple-devops-container
+    ignore_errors: yes
+
+  - name: remove docker image
+    command: docker rmi simple-devops-image
+    ignore_errors: yes
+
+  - name: Build Docker image using war file
+    command: docker build -t simple-devops-image .
+    args:
+      chdir: /opt/docker
+
+
+  - name: Create container using simple-devops-image
+    command: docker run -d --name simple-devops-container -p 8080:8080 simple-devops-image
