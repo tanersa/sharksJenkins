@@ -1,0 +1,69 @@
+11/21/2021 Jenkins
+
+1) Need to install java
+2) yum install java-1.8*
+3) find /usr/lib/jvm/java-1.8* | head -n 3
+4) ls -l /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.302.b08-0.amzn2.0.1.x86_64/jre/
+5) cd ~ --> go back to root dir 
+6) vim .bash_profile 
+7) # .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.302.b08-0.amzn2.0.1.x86_64
+PATH=$PATH:$HOME/bin:$JAVA_HOME
+
+export PATH
+
+8) logoout and log back in and type java -version
+
+9) Install Jenkins --> google type install jenkins and find steps 
+
+
+11/27/2021  Deploy Tomcat app to Docker Container
+
+1) Install Docker --> amazon-linux-extras install docker -y
+2) List docker containers --> docker ps or docker container ls
+3) List docker images --> docker images 
+4) pull tomcat image from dockerhub --> docker pull tomcat
+5) run docker container in foreground mode --> docker run --name tomcat-container -p 8080:8080 tomcat:latest
+6) run docker container in detach mode --> docker run -d --name tomcat-container -p 8080:8080 tomcat:latest
+7) docker ps --> List only running containers
+8) docker ps -a --> List exited containers 
+9) https://techgenix.com/iaas-virtualization-containerization/ --> Difference between virtualization and containeraztion
+10) Deploy tomcat app to tomcat docker container from Jenkins.
+11) Jenkins GUI --> Manage Jenkins --> Manage Plugins --> Install Publish Over SSH plugin.
+12) In Docker EC2 create dockeradmin user --> useradd dockeradmin
+13) Password for dockeradmin --> passwd dockeradmin
+14) Add dockeradmin to docker group --> usermod -aG docker dockeradmin
+15) After configuring from Jenkins GUI connection will fail. Fix: Docker VM --> vim /etc/ssh/sshd_config and 
+Find password authentication and enable it. 
+16) service sshd restart
+
+Ansible - 11/27/2021
+
+1) Configuration Management tool. 
+2) Install Asnible --> python and pip3 
+3) pip3 install ansible 
+
+
+11/28/2021  Jenkins/Docker/Ansible cont. 
+
+Scenario: Shaban tasked to build JavaScript code using React Framework. His application will be served 
+for e-commarce purposes. After 2 weeks he needs to upgrade his code. Basically he needs to add Vritual 
+Gift Cards functionality to the website. Shaban needs to take existing code and add extra lines of code.
+After modifing the code Shaban pushes his changes to GitHub. Once changes checked in GitHub Jenkins will build 
+the code and deploy to target servers. Deployment works in 1st time but it fails in the next runs. 
+
+=========================================================
+Homework 12/04/2021
+
+1) Based on scenario above you need to create a REAMDE.md file and put all the steps how you build 
+smart code 
+2) Insted of using local images (images in VM) you need to pull images from DockerHub. 
+=========================================================
