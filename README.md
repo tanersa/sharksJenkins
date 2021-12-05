@@ -26,43 +26,45 @@
    
    From **Ansible**, we are going to ping these machines and do our deployment from  **Ansible** to all these target machines. Furthermore, another component of **Ansible** tool is **_Ansible Playbook_** file which is in yaml format. **Ansible Playbook** file is located under **/opt/docker/** directory. In this playbook file, we basically direct ansible to find the hosts file which is our inventory file for the deployment and do deployment to these target machines. Next lines in **_Ansible Playbook_**, ansible copy module should be used to give direction where **webapp.war** file will be copied from and where it should be placed to. 
    
-   tasks:
+   **tasks:**
 
   - name: Copy file with owner and permissions
-    ansible.builtin.copy:
-      src: /opt/docker/webapp.war
-      dest: /opt/docker
-      owner: ansadmin
-      group: ansadmin
-      mode: '0644'
+    ansible.builtin.copy:\
+      src: /opt/docker/webapp.war\
+      dest: /opt/docker\
+      owner: ansadmin\
+      group: ansadmin\
+      mode: '0644' 
    
    
    Then all the necessary steps should be taken as below:
    
    **_Stopping current container_** 
-  - name: stop current running container
-    command: docker stop simple-devops-container
-    ignore_errors: yes
+  - name: stop current running container\
+    command: docker stop simple-devops-container\
+    ignore_errors: yes 
 
    **_Removing stopped container_** 
-  - name: remove stopped container
-    command: docker rm simple-devops-container
+  - name: remove stopped container \
+    command: docker rm simple-devops-container \
     ignore_errors: yes
 
    **_Removing docker image_** 
-  - name: remove docker image
-    command: docker rmi simple-devops-image
+  - name: remove docker image \
+    command: docker rmi simple-devops-image \
     ignore_errors: yes
 
    **_Building docker images_**
-  - name: Build Docker image using war file
-    command: docker build -t simple-devops-image .
+  - name: Build Docker image using war file\
+    command: docker build -t simple-devops-image .\
     args:
       chdir: /opt/docker
 
    **_Creating a new container_**
-  - name: Create container using simple-devops-image
+  - name: Create container using simple-devops-image \
     command: docker run -d --name simple-devops-container -p 8080:8080 simple-devops-image
+    
+    Finally, we can build jenkins job one more time and look at the logs.
    
    
    
