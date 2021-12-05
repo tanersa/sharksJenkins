@@ -11,4 +11,5 @@
    
    Lets say, you developed your source code and would like to test your changes in DEV environment fast. Creating and initializing a VM takes time and is hard. Here, you can create your docker container easily and deploy your application to container then start your testing in short period of time. One can create, stop, remove a container really quick. 
    
+   Docker containers are **best microservices**. For example, multiple applications are deployed to docker containers. If one container fails, it doesn't affect another container. Therefore, we will be able to achieve High Availability (HA). 
    
