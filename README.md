@@ -15,8 +15,15 @@
    
    We can consider **Jenkins** as a glue for microservices which put all the components together such as nodejs, java or javascript, bootstrap, jsp files, front end parts, back end parts, Application Programming Interfaces (**APIs**), database and so on so forth. Our main goal is to find the bugs as early as possible. This is necessary to build bug free code. As soon as developers, devops team, and automation testers checks in their changes, application will be built using maven build management tool and artifacts (archieves) will be created. Then the artifacts will be deployed to target servers. 
    
-   In order for Jenkins to process **CI/CD pipeline**, we will need to configure all necessary requirements on Jenkins console, so Jenkins can begin building the application and deploy to target machines. 
+   In order for Jenkins to process **CI/CD pipeline**, we will need to configure all necessary requirements on Jenkins console, so Jenkins can begin building the application and deploy to target machines. Jenkins will be able to deploy **tomcat** application on port no 8080 by default. Now, we would like to deploy our own application on browser not only the **tomcat** app. Therefore, we need to create a **Dockerfile** for deploying our custom application not only the tomcat. Futhermore, **Dockerfile** gets created under **/home/dockeradmin** directory. It will take care of everything for us such as creating docker image and container. **Dockerfiles** are definition files which defines how we would build our docker container, what we will do, where **.war** file should be deployed to. 
    
+   There are two different deployments:
+      A) Fresh Deployment
+      B) Upgrade Deployment
+      
+   Whenever you do upgrade, you dont change the container name and port no. All you change is **configuration**. Therefore, deploying first time would give us **_SUCCESS_!**. However, deploying second time would give **UNSTABLE** result because Jenkins is trying to build a container but a docker container aleardy exsits. Hence, we have to build more **modular** code!  
+   
+  
    
    
    
