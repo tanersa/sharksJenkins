@@ -64,7 +64,10 @@
   - name: Create container using simple-devops-image \
     command: docker run -d --name simple-devops-container -p 8080:8080 simple-devops-image
     
-    Finally, we can build jenkins job one more time and look at the logs.
+    Finally, we can build jenkins job one more time and look at the logs. It should give us success output in normal circumstances since we are stopping and removing our instances and removing our images before creating new ones. By doing this, we achieve smart code deployment using **Ansible**. 
+    
+#### Dockerhub Leverage:
+
    
    
    
