@@ -23,7 +23,7 @@
     A) Fresh Deployment
     B) Upgrade Deployment
       
-   Whenever you do upgrade, you dont change the container name and port no. All you change is **configuration**. Therefore, deploying first time would give us **_SUCCESS_!**. However, deploying second time would give **UNSTABLE** result because Jenkins is trying to build a container but a docker container aleardy exsits. Hence, we have to build more **modular** code! We need to fix this issue. Consequently, we have to build more DevOps tools and we need better Container Orhestration. Then, **Ansible** **(Configuration Management Tool)** comes into the picture. There is no master in Ansible where we can pull all configuration. We need to configure everything manually. **Ansible**
+   Whenever you do upgrade, you dont change the container name and port no. All you change is **configuration**. Therefore, deploying first time would give us **_SUCCESS_!**. However, deploying second time would give **UNSTABLE** result because Jenkins is trying to build a container but a docker container aleardy exsits. Hence, we have to build more **modular** code! We need to fix this issue. Consequently, we have to build more DevOps tools and we need better Container Orhestration. Then, **Ansible** **(Configuration Management Tool)** comes into the picture. There is no master in Ansible where we can pull all configuration. We need to configure everything manually. **Ansible** also has hosts file which is called **'Inventory'** file.
    
    
   
