@@ -18,6 +18,7 @@
    In order for Jenkins to process **CI/CD pipeline**, we will need to configure all necessary requirements on Jenkins console, so Jenkins can begin building the application and deploy to target machines. Jenkins will be able to deploy **tomcat** application on port no 8080 by default. Now, we would like to deploy our own application on browser not only the **tomcat** app. Therefore, we need to create a **Dockerfile** for deploying our custom application not only the tomcat. Futhermore, **Dockerfile** gets created under **/home/dockeradmin** directory. It will take care of everything for us such as creating docker image and container. **Dockerfiles** are definition files which defines how we would build our docker container, what we will do, where **.war** file should be deployed to. 
    
    There are two different deployments:
+   
       A) Fresh Deployment
       B) Upgrade Deployment
       
