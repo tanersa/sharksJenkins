@@ -68,6 +68,39 @@
     
 #### Dockerhub Leverage:
 
+   We also leveraged **Dockerhub** registry as a repository because we prevent storing our images locally. If one of VMs goes down, we do not want to loose our docker images. We rather prefer to keep docker images in centralized location.
+   
+   Below are the commands that needs to be run in cli for dockerhub registry:
+   
+   1- **_Tag your images_**:
+   
+   docker tag (docker-image-name) (docker-user-id / docker-image-name)
+   
+      Example: docker tag simple-devops-image sharksdocker/simple-devops-image
+   
+   2- **_Login to Docker Account_**:
+   
+   docker login 
+   _Username and password will be prompted for the user_
+   
+   3- **_Push your image to docker hub_**
+   
+   docker push (docker-user-id / docker-image-name)
+    
+      Example: docker push sharksdocker/simple-devops-image
+    
+   4- **_Login to your Docker account and verify your docker image on your acc._**
+    
+   Note[^1].
+   [^1]:If you would like to pull your docker image from dockerhub, simply replace 'push' flag with 'pull' then run your cli command.
+    
+      Example: docker pull sharksdocker/simple-devops-image:latest
+   
+   
+   
+   
+   
+
    
    
    
