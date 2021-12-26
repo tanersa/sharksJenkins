@@ -1,0 +1,36 @@
+---
+- hosts: all
+  #become: true
+  #user: ansadmin
+
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: /opt/docker/webapp.war
+      dest: /opt/docker
+      owner: ansadmin
+      group: ansadmin
+      mode: '0644'
+
+  - name: build docker image using war file
+    command: docker build -t simple-devops-image:latest .
+    args:
+      chdir: /opt/docker
+
+  - name: create image tag
+    command: docker tag simple-devops-image sharksdocker/simple-devops-image
+
+
+  - name: push image to dockerhub
+    command: docker push sharksdocker/simple-devops-image
+
+  - name: Remove Docker images from local for security reasons
+    command: docker rmi sharksdocker/simple-devops-image:latest simple-devops-image:latest
+    ignore_errors: true
+
+  - name: pull docker image from dockerhub
+    command: docker pull sharksdocker/simple-devops-image:latest
+
+  - name: build docker container with image pulled from dockerhub
+    command: docker run -d --name simple-devops-container -p 8080:8080 sharksdocker/simple-devops-image:latest
