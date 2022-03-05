@@ -18,6 +18,7 @@
     args:
       chdir: /opt/docker
 
+
   - name: create image tag
     command: docker tag simple-devops-image sharksdocker/simple-devops-image
 
