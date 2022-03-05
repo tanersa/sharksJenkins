@@ -38,6 +38,7 @@
       mode: '0644' 
    
    
+   
    Then all the necessary steps should be taken as below:
    
    **_Stopping current container_** 
