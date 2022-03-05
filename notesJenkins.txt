@@ -51,7 +51,6 @@ Ansible - 11/27/2021
 2) Install Asnible --> python and pip3 
 3) pip3 install ansible 
 
-
 11/28/2021  Jenkins/Docker/Ansible cont. 
 
 Scenario: Shaban tasked to build JavaScript code using React Framework. His application will be served 
