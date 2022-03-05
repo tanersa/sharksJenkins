@@ -21,7 +21,6 @@
   - name: create image tag
     command: docker tag simple-devops-image sharksdocker/simple-devops-image
 
-
   - name: push image to dockerhub
     command: docker push sharksdocker/simple-devops-image
 
